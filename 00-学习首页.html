@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>OH!SOME 多国家会员 AI 客服｜21天学习地图</title>
+<style>
+:root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#172033;
+  --muted:#667085;
+  --line:#e6e9ee;
+  --dark:#101828;
+  --orange:#f97316;
+  --orange-soft:#fff2e8;
+  --blue:#2563eb;
+  --blue-soft:#eff6ff;
+  --green:#15803d;
+  --green-soft:#ecfdf3;
+  --purple:#7c3aed;
+  --purple-soft:#f5f3ff;
+  --red:#dc2626;
+  --shadow:0 14px 42px rgba(16,24,40,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+button,a,input{font:inherit}
+a{color:inherit}
+.shell{max-width:1440px;margin:0 auto;padding:20px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0f172a 0%,#1f2a44 58%,#384660 100%);color:#fff;border-radius:28px;padding:34px 36px;box-shadow:var(--shadow)}
+.hero:after{content:"";position:absolute;width:320px;height:320px;border-radius:50%;right:-100px;top:-150px;background:rgba(249,115,22,.18)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:30px;align-items:start}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;padding:6px 11px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.09);border-radius:999px;font-size:13px;margin-bottom:12px}
+.hero h1{margin:0 0 12px;font-size:36px;line-height:1.18;letter-spacing:-.02em}
+.hero p{margin:0;max-width:850px;color:#d0d5dd;font-size:16px}
+.hero-goal{margin-top:20px;display:flex;flex-wrap:wrap;gap:9px}
+.hero-goal span{padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);font-size:13px;color:#f2f4f7}
+.progress-card{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);padding:17px;border-radius:18px;backdrop-filter:blur(8px)}
+.progress-card .label{display:flex;justify-content:space-between;align-items:center;color:#e4e7ec;font-size:13px}
+.progress-card strong{font-size:28px;color:#fff}
+.progress{height:10px;background:rgba(255,255,255,.17);border-radius:999px;overflow:hidden;margin:10px 0 8px}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#fb923c,#fdba74);transition:width .25s ease}
+.progress-card small{color:#d0d5dd}
+.progress-actions{display:flex;gap:8px;margin-top:14px}
+.progress-actions button{flex:1;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff;border-radius:10px;padding:8px 10px;cursor:pointer;font-size:12px}
+.progress-actions button:hover{background:rgba(255,255,255,.14)}
+
+.quick-start{margin-top:18px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:0 8px 28px rgba(16,24,40,.05);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center}
+.quick-start .overline{font-size:12px;color:var(--orange);font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.quick-start h2{margin:3px 0 4px;font-size:22px;line-height:1.3}
+.quick-start p{margin:0;color:var(--muted)}
+.quick-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.quick-meta span{font-size:12px;padding:5px 9px;border-radius:999px;background:#f2f4f7;color:#475467}
+.btn{border:0;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 15px;border-radius:11px;font-weight:800;background:var(--orange);color:#fff}
+.btn:hover{filter:brightness(.98)}
+.btn.secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
+.btn.dark{background:var(--dark)}
+.btn.small{padding:8px 11px;font-size:13px}
+
+.layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:18px;margin-top:18px}
+.sidebar{position:sticky;top:16px;height:calc(100vh - 32px);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 7px 26px rgba(16,24,40,.04)}
+.sidebar h3{margin:0 0 8px;font-size:15px}
+.sidebar .hint{color:var(--muted);font-size:12px;margin-bottom:14px}
+.stage-nav{display:flex;flex-direction:column;gap:9px}
+.stage-link{border:1px solid var(--line);background:#fff;border-radius:14px;padding:11px;text-align:left;cursor:pointer}
+.stage-link:hover{border-color:#fdba74;background:#fffaf5}
+.stage-link b{display:block;font-size:13px}
+.stage-link small{display:block;color:var(--muted);margin-top:2px}
+.stage-progress{height:5px;background:#eef2f6;border-radius:999px;overflow:hidden;margin-top:7px}
+.stage-progress i{display:block;height:100%;background:var(--orange);width:0}
+.sidebar-rule{border:0;border-top:1px solid var(--line);margin:17px 0}
+.search-box{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:9px 10px;background:#f8fafc}
+.search-box input{border:0;outline:0;background:transparent;width:100%;font-size:13px;color:var(--text)}
+.day-jump{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.day-jump button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 4px;font-size:11px;cursor:pointer;color:#475467}
+.day-jump button.done{background:var(--green-soft);border-color:#bbf7d0;color:var(--green)}
+.day-jump button:hover{border-color:#fdba74}
+
+.main{min-width:0}
+.section-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:0 7px 26px rgba(16,24,40,.04);margin-bottom:18px}
+.section-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-bottom:18px}
+.section-head h2{margin:0 0 5px;font-size:24px;line-height:1.3}
+.section-head p{margin:0;color:var(--muted)}
+.section-tag{white-space:nowrap;padding:5px 9px;border-radius:999px;background:var(--orange-soft);color:#c2410c;font-size:12px;font-weight:800}
+
+.path{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:stretch}
+.path-item{position:relative;border:1px solid var(--line);border-radius:15px;padding:13px 12px;background:#fff;min-height:118px}
+.path-item:after{content:"→";position:absolute;right:-13px;top:40%;font-weight:800;color:#98a2b3;z-index:2}
+.path-item:last-child:after{display:none}
+.path-item .num{font-size:11px;color:var(--orange);font-weight:800}
+.path-item b{display:block;margin:5px 0 4px;font-size:14px;line-height:1.35}
+.path-item small{color:var(--muted);font-size:12px;line-height:1.45}
+
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.cap{border:1px solid var(--line);border-radius:16px;padding:15px;background:#fff}
+.cap .icon{width:34px;height:34px;border-radius:10px;background:var(--blue-soft);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px}
+.cap:nth-child(2) .icon,.cap:nth-child(5) .icon{background:var(--purple-soft);color:var(--purple)}
+.cap:nth-child(3) .icon,.cap:nth-child(6) .icon{background:var(--green-soft);color:var(--green)}
+.cap b{display:block;margin:9px 0 4px;font-size:15px}
+.cap p{margin:0;color:var(--muted);font-size:13px}
+.cap small{display:block;margin-top:7px;color:#475467;font-weight:700}
+
+.stage-section{scroll-margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:24px;margin-bottom:18px;overflow:hidden;box-shadow:0 7px 26px rgba(16,24,40,.04)}
+.stage-header{padding:24px 24px 20px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:20px;align-items:start}
+.stage-kicker{font-size:12px;color:var(--orange);font-weight:900;letter-spacing:.06em;text-transform:uppercase}
+.stage-header h2{margin:4px 0 6px;font-size:26px;line-height:1.25}
+.stage-header p{margin:0;color:var(--muted)}
+.milestone{border-radius:15px;background:#f8fafc;border:1px solid #eef2f6;padding:13px}
+.milestone small{display:block;color:var(--muted);font-size:12px}
+.milestone b{display:block;margin-top:4px;font-size:14px}
+.stage-body{padding:20px 22px 24px}
+.day-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.day-card{position:relative;border:1px solid var(--line);border-radius:17px;padding:16px;background:#fff;transition:.18s ease;scroll-margin-top:18px}
+.day-card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(16,24,40,.07);border-color:#fdba74}
+.day-card.is-next{border-color:#fb923c;box-shadow:0 0 0 3px rgba(249,115,22,.08)}
+.day-card.done{background:linear-gradient(180deg,#fff,#fbfffc);border-color:#bbf7d0}
+.day-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.day-label{display:inline-flex;align-items:center;gap:6px;color:var(--orange);font-size:12px;font-weight:900}
+.day-label i{display:inline-flex;width:25px;height:25px;align-items:center;justify-content:center;border-radius:8px;background:var(--orange-soft);font-style:normal}
+.done .day-label{color:var(--green)}
+.done .day-label i{background:var(--green-soft)}
+.day-card h3{font-size:18px;line-height:1.35;margin:8px 0 8px}
+.check-btn{border:1px solid var(--line);background:#fff;border-radius:9px;padding:6px 8px;cursor:pointer;color:#667085;font-size:12px;white-space:nowrap}
+.check-btn:hover{border-color:#86efac}
+.done .check-btn{color:var(--green);border-color:#86efac;background:var(--green-soft)}
+.question{background:#f8fafc;border-left:3px solid var(--orange);border-radius:0 10px 10px 0;padding:9px 11px;font-size:13px;color:#344054;margin-bottom:11px}
+.day-row{margin-top:9px}
+.day-row .row-title{font-size:11px;color:#98a2b3;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip{padding:4px 8px;border-radius:999px;background:#f2f4f7;color:#475467;font-size:12px}
+.outcome{margin-top:10px;padding:9px 10px;border-radius:11px;background:var(--blue-soft);color:#1d4ed8;font-size:13px}
+.output-line{margin-top:9px;font-size:13px;color:#475467}
+.output-line b{color:var(--text)}
+.day-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+.materials{position:relative}
+.materials-popup{display:none;position:fixed;z-index:1000;width:280px;max-width:calc(100vw - 24px);background:#fff;border:1px solid var(--line);border-radius:14px;padding:9px;box-shadow:0 22px 60px rgba(16,24,40,.22)}
+.materials-popup.show{display:block}
+.materials-popup:before{content:"";position:absolute;width:10px;height:10px;background:#fff;border-left:1px solid var(--line);border-top:1px solid var(--line);transform:rotate(45deg);top:-6px;right:24px}
+.materials-popup.open-up:before{top:auto;bottom:-6px;transform:rotate(225deg)}
+.materials-tip{padding:7px 9px 9px;color:#667085;font-size:11px;line-height:1.45;border-bottom:1px solid #eef2f6;margin-bottom:4px}
+.materials-popup a{display:flex;align-items:center;justify-content:space-between;gap:8px;text-decoration:none;padding:9px;border-radius:9px;font-size:13px;color:#344054}
+.materials-popup a:hover{background:#f8fafc}
+.file-kind{flex:none;font-size:10px;font-weight:800;padding:2px 6px;border-radius:999px;background:#f2f4f7;color:#667085}
+.file-kind.md{background:var(--blue-soft);color:var(--blue)}
+.file-kind.xlsx{background:var(--green-soft);color:var(--green)}
+
+.final-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.final-item{border:1px solid var(--line);border-radius:15px;padding:14px;background:#fff}
+.final-item b{display:block;font-size:14px;margin-bottom:5px}
+.final-item p{margin:0;color:var(--muted);font-size:13px}
+.truth-note{margin-top:14px;border-radius:14px;padding:13px 14px;background:#fffaeb;border:1px solid #fedf89;color:#7a2e0e;font-size:13px}
+
+.reader-wrap{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:100;padding:18px}
+.reader-wrap.show{display:flex;align-items:center;justify-content:center}
+.reader-shell{width:min(1280px,100%);height:calc(100vh - 36px);background:#fff;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+.reader-toolbar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);background:#f8fafc}
+.reader-toolbar span{font-size:13px;color:#475467;font-weight:800}
+.reader{width:100%;height:100%;border:0;background:#fff}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+.footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 22px}
+.hidden{display:none!important}
+
+@media(max-width:1120px){
+  .hero-grid{grid-template-columns:1fr}.progress-card{max-width:none}
+  .path{grid-template-columns:repeat(3,1fr)}.path-item:nth-child(3):after{display:none}
+  .layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}.day-jump{grid-template-columns:repeat(7,1fr)}
+}
+@media(max-width:820px){
+  .shell{padding:12px}.hero{padding:26px 22px;border-radius:22px}.hero h1{font-size:29px}
+  .quick-start{grid-template-columns:1fr}.quick-start .btn{width:100%}
+  .cap-grid{grid-template-columns:repeat(2,1fr)}
+  .stage-header{grid-template-columns:1fr}.day-grid{grid-template-columns:1fr}
+  .final-grid{grid-template-columns:repeat(2,1fr)}
+  .path{grid-template-columns:repeat(2,1fr)}.path-item:nth-child(2):after,.path-item:nth-child(4):after{display:none}.path-item:nth-child(3):after{display:block}
+}
+@media(max-width:560px){
+  .hero h1{font-size:25px}.hero p{font-size:14px}.section-card{padding:18px}.section-head{display:block}.section-tag{display:inline-flex;margin-top:8px}
+  .cap-grid,.final-grid,.path{grid-template-columns:1fr}.path-item:after{display:none!important}.day-jump{grid-template-columns:repeat(5,1fr)}
+  .stage-header,.stage-body{padding-left:16px;padding-right:16px}.day-card{padding:14px}
+  .reader-wrap{padding:5px}.reader-shell{height:calc(100vh - 10px);border-radius:12px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">21天完整实战 · 学习者总地图</div>
+        <h1>OH!SOME 多国家会员 AI 客服</h1>
+        <p>从真实会员业务出发，完整走过立项、场景、架构、Agent、Tool Calling、RAG、异常工作流、评测、上线和运营。首页只回答四件事：今天学什么、为什么学、学完会什么、下一步去哪。</p>
+        <div class="hero-goal">
+          <span>产品负责人视角</span><span>一个贯穿式项目</span><span>业务 + 技术 + 风险</span><span>最终可答辩</span>
+        </div>
+      </div>
+      <div class="progress-card">
+        <div class="label"><span>我的学习进度</span><strong id="progressText">0 / 21</strong></div>
+        <div class="progress"><i id="progressBar"></i></div>
+        <small id="progressHint">勾选每天的“标记完成”，进度只保存在当前浏览器。</small>
+        <div class="progress-actions"><button id="goNext">继续下一课</button><button id="resetProgress">重置进度</button></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="quick-start" id="quickStart">
+    <div>
+      <div class="overline">建议下一课</div>
+      <h2 id="nextTitle">Day 1｜项目事实、目标与边界</h2>
+      <p id="nextQuestion">为什么要做会员 AI 客服，第一期到底做到哪里？</p>
+      <div class="quick-meta" id="nextMeta"></div>
+    </div>
+    <button class="btn" id="startNext">开始学习</button>
+  </section>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>学习路线</h3>
+      <div class="hint">三个阶段、21天，建议按顺序推进。</div>
+      <div class="stage-nav" id="stageNav"></div>
+      <hr class="sidebar-rule" />
+      <h3>快速查找</h3>
+      <div class="search-box"><span>⌕</span><input id="searchInput" placeholder="搜索：RAG、积分、评测……" /></div>
+      <div class="day-jump" id="dayJump"></div>
+    </aside>
+
+    <main class="main">
+      <section class="section-card">
+        <div class="section-head">
+          <div><h2>项目主线：21天到底在学什么</h2><p>不是21个孤立知识点，而是一条从业务问题到安全上线的完整项目链路。</p></div>
+          <span class="section-tag">先看全局，再进章节</span>
+        </div>
+        <div class="path">
+          <div class="path-item"><span class="num">01</span><b>发现问题与立项</b><small>明确用户问题、业务价值、MVP范围。</small></div>
+          <div class="path-item"><span class="num">02</span><b>设计AI产品</b><small>场景、架构、意图、会话、身份安全。</small></div>
+          <div class="path-item"><span class="num">03</span><b>连接真实系统</b><small>Agent编排、会员API、Tool Calling。</small></div>
+          <div class="path-item"><span class="num">04</span><b>管理企业知识</b><small>RAG、多国家、多语言和规则版本。</small></div>
+          <div class="path-item"><span class="num">05</span><b>处理复杂异常</b><small>原因树、护栏、拒答和人工接管。</small></div>
+          <div class="path-item"><span class="num">06</span><b>评测并安全上线</b><small>Golden Set、回归、灰度、监控、答辩。</small></div>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-head">
+          <div><h2>结课能力地图</h2><p>学完不是“知道几个AI名词”，而是能承担一个会员客服AI产品负责人的核心工作。</p></div>
+          <span class="section-tag">6项能力</span>
+        </div>
+        <div class="cap-grid">
+          <div class="cap"><div class="icon">01</div><b>业务判断与MVP</b><p>判断哪些会员问题值得AI化、哪些必须保留人工。</p><small>对应 Day 1—2</small></div>
+          <div class="cap"><div class="icon">02</div><b>产品与会话设计</b><p>完成系统架构、意图、槽位、多轮会话与权限设计。</p><small>对应 Day 3—7</small></div>
+          <div class="cap"><div class="icon">03</div><b>Agent与工具调用</b><p>设计受控编排、工具契约、参数、错误码和失败恢复。</p><small>对应 Day 8—9</small></div>
+          <div class="cap"><div class="icon">04</div><b>RAG与规则治理</b><p>建设可追溯、可过滤、可版本化的多国家知识体系。</p><small>对应 Day 10—11</small></div>
+          <div class="cap"><div class="icon">05</div><b>异常与安全控制</b><p>诊断积分、优惠券和权益异常，控制幻觉与越权风险。</p><small>对应 Day 12—16</small></div>
+          <div class="cap"><div class="icon">06</div><b>评测、上线与运营</b><p>建立测试集、上线Gate、监控、排障和项目答辩。</p><small>对应 Day 17—21</small></div>
+        </div>
+      </section>
+
+      <div id="stages"></div>
+
+      <section class="section-card">
+        <div class="section-head">
+          <div><h2>最终验收</h2><p>完成21天后，用以下四项判断自己是否真正掌握，而不是只浏览过材料。</p></div>
+          <span class="section-tag">结课标准</span>
+        </div>
+        <div class="final-grid">
+          <div class="final-item"><b>5分钟讲清项目</b><p>能讲明背景、目标、范围、总体方案和核心取舍。</p></div>
+          <div class="final-item"><b>20分钟完整答辩</b><p>从场景、架构、RAG、工具到评测上线完整展开。</p></div>
+          <div class="final-item"><b>定位3类线上问题</b><p>能区分API、知识、检索、生成、工作流和权限问题。</p></div>
+          <div class="final-item"><b>经得住深入追问</b><p>能解释参数、失败恢复、风险边界、指标口径和回滚。</p></div>
+        </div>
+        <div class="truth-note"><b>真实性边界：</b>CRM、会员中台、App/H5、积分、等级、权益和会员运营属于你的真实经验；会员AI客服属于基于真实业务底座完成的深度模拟项目。学习目标是获得完整方案与判断能力，不把模拟数据表述为真实上线结果。</div>
+      </section>
+    </main>
+  </div>
+
+  <div class="footer">OH!SOME 多国家会员 AI 客服 · 21天完整实战版</div>
+</div>
+
+<div class="materials-popup" id="materialsPopup" role="dialog" aria-label="配套资料"></div>
+
+<div class="reader-wrap" id="readerWrap">
+  <div class="reader-shell">
+    <div class="reader-toolbar"><span id="readerLabel">章节阅读</span><button class="btn secondary small" id="closeReader">关闭</button></div>
+    <iframe class="reader" id="reader" title="学习章节"></iframe>
+  </div>
+</div>
+
+<script>
+const days = [
+ {d:1,t:"项目事实、目标与边界",stage:1,time:"60分钟",q:"为什么要做会员AI客服，第一期到底做到哪里？",learn:["真实业务底座","会员资产与规则","MVP范围"],outcome:"能用5分钟讲清项目背景、目标、一期范围和不做事项。",practice:"项目立项与范围说明",chapter:"day1/01-Day1-项目立项与范围边界.html",files:[["项目立项说明","day1/01-项目立项与范围说明.md"]]},
+ {d:2,t:"会员咨询场景分析与优先级",stage:1,time:"60分钟",q:"零散客服咨询，如何变成可识别、可排期的产品场景？",learn:["场景拆分","咨询数据来源","优先级与MVP"],outcome:"能建立会员咨询场景库，并判断哪些场景先做、后做或不做。",practice:"50场景/60样例场景库",chapter:"day2/02-Day2-会员咨询场景分析与优先级.html",files:[["会员咨询场景库","day2/02-会员咨询场景库.xlsx"],["分析说明","day2/02-会员咨询场景分析与优先级说明.md"]]},
+ {d:3,t:"产品范围与总体架构",stage:1,time:"60分钟",q:"为什么会员AI客服不是一个接入知识库的聊天框？",learn:["八层架构","六种路由","模型/代码/系统/人工边界"],outcome:"能画出完整系统链路，并解释每个组件为什么存在。",practice:"总体架构与组件责任表",chapter:"day3/03-Day3-产品范围与总体架构.html",files:[["总体架构方案","day3/03-会员AI客服总体架构方案.md"],["组件责任表","day3/03-系统组件与责任边界.xlsx"]]},
+ {d:4,t:"意图分类与槽位设计",stage:1,time:"60分钟",q:"模型如何把自然语言问题转换成系统可执行的结构化输入？",learn:["分层意图","槽位抽取","置信度与混淆意图"],outcome:"能设计意图标签、槽位、风险标记和低置信度处理规则。",practice:"意图与槽位分类表",chapter:"day4/04-Day4-意图分类与槽位设计.html",files:[["意图槽位表","day4/04-意图与槽位分类表.xlsx"],["识别与路由规范","day4/04-意图识别与路由规范.md"]]},
+ {d:5,t:"多轮会话与上下文管理",stage:1,time:"60分钟",q:"AI如何连续理解用户，又不跨订单、跨优惠券、跨话题串数据？",learn:["会话状态机","上下文分层","追问与话题切换"],outcome:"能设计多轮追问、对象确认、状态迁移和上下文清理规则。",practice:"会话状态与追问规则",chapter:"day5/05-Day5-多轮会话与上下文管理.html",files:[["会话规则","day5/05-会话状态与追问规则.xlsx"],["会话设计方案","day5/05-多轮会话与上下文设计方案.md"]]},
+ {d:6,t:"会员身份、权限与数据安全",stage:1,time:"60分钟",q:"登录后就能查任何订单和优惠券吗？如何防止跨账号和越权？",learn:["身份分级","对象归属","Scope与字段最小化"],outcome:"能定义谁能查什么、工具能返回什么、哪些字段必须脱敏。",practice:"身份权限与数据安全矩阵",chapter:"day6/06-Day6-会员身份权限与数据安全.html",files:[["安全矩阵","day6/06-身份权限与数据安全矩阵.xlsx"],["安全方案","day6/06-会员身份权限与数据安全方案.md"]]},
+ {d:7,t:"第一阶段综合实战",stage:1,time:"120分钟",q:"前六天的立项、场景、架构、会话和安全设计是否前后一致？",learn:["方案一致性","核心取舍","阶段答辩"],outcome:"能完成第一版产品方案，并进行5分钟阶段答辩。",practice:"第一阶段项目方案V1",chapter:"day7/07-Day7-第一阶段综合实战.html",files:[["第一阶段项目方案","day7/07-第一阶段项目方案V1.md"],["一致性与答辩表","day7/07-第一阶段方案一致性与答辩表.xlsx"]]},
+ {d:8,t:"Agent与受控工作流",stage:2,time:"60分钟",q:"哪些步骤可以交给模型判断，哪些必须由代码写死？",learn:["Agent能力边界","五种编排方式","失败恢复"],outcome:"能为不同场景选择固定流程、受控Agent或人工优先。",practice:"Agent与工作流决策矩阵",chapter:"day8/08-Day8-Agent与受控工作流.html",files:[["工作流设计说明","day8/08-Agent与受控工作流设计说明.md"],["决策矩阵","day8/08-Agent与受控工作流决策矩阵.xlsx"]]},
+ {d:9,t:"会员API与Tool Calling",stage:2,time:"60分钟",q:"如何把会员中台能力安全地包装成AI可以调用的工具？",learn:["工具契约","参数与错误码","重试/幂等/部分成功"],outcome:"能定义会员工具目录、输入输出协议和调用安全规则。",practice:"18个会员API工具目录",chapter:"day9/09-Day9-会员API与Tool-Calling.html",files:[["Tool Calling详细设计","day9/09-会员API与Tool-Calling详细设计.md"],["会员API工具目录","day9/09-会员API工具目录与调用规范.xlsx"]]},
+ {d:10,t:"会员规则知识库与RAG",stage:2,time:"60分钟",q:"如何让AI基于企业有效规则回答，而不是凭模型记忆生成？",learn:["知识源与权威等级","切片与元数据","过滤/召回/引用"],outcome:"能设计从知识采集、切片、检索到发布更新的RAG流程。",practice:"知识库目录与切片规范",chapter:"day10/10-Day10-会员知识库与RAG.html",files:[["RAG建设规范","day10/10-会员规则知识库与RAG建设规范.md"],["知识目录与切片规范","day10/10-会员知识库目录与切片规范.xlsx"]]},
+ {d:11,t:"多国家、多语言与规则版本治理",stage:2,time:"60分钟",q:"如何避免新加坡用户命中马来西亚规则，或使用已经失效的旧政策？",learn:["国家/渠道过滤","规范事实与译文","版本生效与回滚"],outcome:"能建立多国家规则隔离、语言映射和版本治理机制。",practice:"多国家规则与版本治理矩阵",chapter:"day11/11-Day11-多国家多语言与规则版本治理.html",files:[["治理方案","day11/11-多国家多语言与规则版本治理方案.md"],["规则版本治理表","day11/11-多国家规则元数据与版本治理.xlsx"]]},
+ {d:12,t:"积分未到账异常工作流",stage:2,time:"60分钟",q:"“积分三天没到账”为什么不能只回复一条通用积分规则？",learn:["多工具诊断","原因树","稳定原因码"],outcome:"能联合订单、支付、资格、积分流水和规则完成异常诊断。",practice:"积分未到账原因树与40条用例",chapter:"day12/12-Day12-积分未到账异常工作流.html",files:[["积分异常工作流方案","day12/12-积分未到账异常工作流方案.md"],["原因树与测试用例","day12/12-积分未到账原因树与测试用例.xlsx"]]},
+ {d:13,t:"优惠券、生日礼与权益异常",stage:2,time:"60分钟",q:"券不可用、生日礼未发和权益核销失败，能否共用一套异常框架？",learn:["对象状态","资格规则","发放/核销事实"],outcome:"能用统一原因树诊断三类权益异常，并守住补偿边界。",practice:"26个原因码与36条测试",chapter:"day13/13-Day13-优惠券生日礼与权益异常工作流.html",files:[["权益异常工作流方案","day13/13-优惠券与权益异常工作流方案.md"],["原因树与测试用例","day13/13-优惠券与权益异常原因树与测试用例.xlsx"]]},
+ {d:14,t:"第二阶段综合实战",stage:2,time:"120分钟",q:"Agent、工具、RAG、版本治理和异常工作流能否组成一套可落地系统？",learn:["详细架构","接口契约","技术一致性"],outcome:"能完成系统详细方案，并回答关键技术取舍问题。",practice:"第二阶段系统详细方案V1",chapter:"day14/14-Day14-第二阶段综合实战.html",files:[["系统详细方案","day14/14-第二阶段系统详细方案V1.md"],["一致性与答辩表","day14/14-第二阶段技术方案一致性与答辩表.xlsx"]]},
+ {d:15,t:"防幻觉、拒答与风险边界",stage:3,time:"60分钟",q:"AI什么时候应该回答、追问、拒答、降级或转人工？",learn:["十层护栏","五种处理动作","P0风险"],outcome:"能设计输入、权限、工具、RAG、生成和输出的分层安全控制。",practice:"AI风险与护栏规则",chapter:"day15/15-Day15-防幻觉拒答与风险边界.html",files:[["防幻觉与风险方案","day15/15-防幻觉拒答与风险边界方案.md"],["风险护栏规则","day15/15-AI风险护栏与防幻觉规则.xlsx"]]},
+ {d:16,t:"转人工与客服衔接",stage:3,time:"60分钟",q:"AI无法继续处理时，怎样让人工客服真正接得住？",learn:["触发规则","队列与SLA","上下文交接与反馈"],outcome:"能设计转人工触发、目标队列、交接字段和人工反馈回灌。",practice:"转人工规则与客服交接",chapter:"day16/16-Day16-转人工与客服衔接.html",files:[["转人工衔接方案","day16/16-转人工与客服衔接方案.md"],["转人工规则与交接表","day16/16-转人工规则与客服交接.xlsx"]]},
+ {d:17,t:"Golden Set与评分Rubric",stage:3,time:"60分钟",q:"如何证明AI不仅回答得像人，而且事实、工具、权限和分流都正确？",learn:["Golden Set结构","14维Rubric","P0一票否决"],outcome:"能建立覆盖答案、检索、工具轨迹、权限和人工分流的评测体系。",practice:"72条Golden Set与评分表",chapter:"day17/17-Day17-Golden-Set与评分Rubric.html",files:[["评测方案与Rubric","day17/17-会员AI客服评测方案与评分Rubric.md"],["Golden Set与评分表","day17/17-会员AI客服Golden-Set与评分表.xlsx"]]},
+ {d:18,t:"错误定位与回归评测",stage:3,time:"60分钟",q:"回答错了以后，如何判断问题出在API、知识、检索、生成还是工作流？",learn:["错误分类","定位决策树","变更与回归范围"],outcome:"能收集最小证据、定位根因，并制定针对性的回归测试。",practice:"37类错误码与40条回归用例",chapter:"day18/18-Day18-错误定位与回归评测.html",files:[["错误定位与回归手册","day18/18-错误定位与回归评测手册.md"],["错误分类与回归矩阵","day18/18-错误分类与回归评测矩阵.xlsx"]]},
+ {d:19,t:"上线Gate、灰度与回滚",stage:3,time:"60分钟",q:"平均分很高就能上线吗？出现问题时究竟回滚哪一层？",learn:["上线Gate","七阶段灰度","独立版本与回滚"],outcome:"能设计上线门槛、灰度节奏、Feature Flag和分层回滚方案。",practice:"上线Gate与回滚演练",chapter:"day19/19-Day19-上线Gate灰度与回滚.html",files:[["上线Gate与灰度方案","day19/19-上线Gate灰度与回滚方案.md"],["上线Gate与回滚表","day19/19-上线Gate灰度与回滚.xlsx"]]},
+ {d:20,t:"线上监控与故障排查",stage:3,time:"60分钟",q:"上线后如何判断AI真的解决问题，而不是只是没有转人工？",learn:["指标口径","全链路Trace","告警与Runbook"],outcome:"能定义线上指标、建立可观测性，并按层排查故障。",practice:"线上监控指标与排障手册",chapter:"day20/20-Day20-线上监控与故障排查.html",files:[["线上监控与排障手册","day20/20-线上监控与故障排查手册.md"],["监控指标与故障排查","day20/20-线上监控指标与故障排查.xlsx"]]},
+ {d:21,t:"完整项目复盘与面试答辩",stage:3,time:"120分钟",q:"如何把这套模拟项目讲成可信、完整、经得住追问的项目经验？",learn:["5分钟与20分钟讲述","35道深入追问","证据与真实性边界"],outcome:"能完整复盘项目、解释关键取舍，并明确真实经历与模拟项目边界。",practice:"完整项目答辩稿与证据索引",chapter:"day21/21-Day21-完整项目复盘与面试答辩.html",files:[["完整项目复盘与答辩稿","day21/21-完整项目复盘与面试答辩稿.md"],["答辩与证据索引","day21/21-项目复盘面试答辩与证据索引.xlsx"]]}
+];
+const stages=[
+ {id:1,name:"阶段一｜从会员业务到AI产品",days:"Day 1—7",goal:"回答为什么做、先做什么，以及产品如何安全地理解用户。",milestone:"完成第一版产品方案，并能做5分钟阶段答辩。"},
+ {id:2,name:"阶段二｜让AI连接真实系统并处理异常",days:"Day 8—14",goal:"掌握Agent、Tool Calling、RAG、规则治理和复杂异常工作流。",milestone:"完成系统详细方案，并能解释关键技术取舍。"},
+ {id:3,name:"阶段三｜评测、安全上线与项目答辩",days:"Day 15—21",goal:"建立防幻觉、人工接管、评测、灰度、监控和复盘体系。",milestone:"完成上线方案和20分钟完整项目答辩。"}
+];
+const completed=new Set(JSON.parse(localStorage.getItem('ohsome_completed')||'[]'));
+let searchTerm='';
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const nextDay=()=>days.find(x=>!completed.has(x.d))||days[20];
+function save(){localStorage.setItem('ohsome_completed',JSON.stringify([...completed].sort((a,b)=>a-b)));}
+function stageDone(id){const list=days.filter(x=>x.stage===id);return list.filter(x=>completed.has(x.d)).length;}
+function updateProgress(){
+ const n=completed.size,p=Math.round(n/21*100),next=nextDay();
+ document.getElementById('progressText').textContent=`${n} / 21`;
+ document.getElementById('progressBar').style.width=`${p}%`;
+ document.getElementById('progressHint').textContent=n===21?'已完成全部章节。建议进入Day 21做最终答辩。':`已完成 ${p}% · 下一课建议从 Day ${next.d} 开始`;
+ document.getElementById('nextTitle').textContent=`Day ${next.d}｜${next.t}`;
+ document.getElementById('nextQuestion').textContent=next.q;
+ document.getElementById('nextMeta').innerHTML=`<span>${next.time}</span><span>${esc(next.practice)}</span><span>阶段${next.stage}</span>`;
+ document.getElementById('startNext').onclick=()=>openChapter(next);
+ document.getElementById('goNext').onclick=()=>{document.getElementById(`day-${next.d}`).scrollIntoView({behavior:'smooth',block:'center'});};
+}
+function renderSidebar(){
+ document.getElementById('stageNav').innerHTML=stages.map(s=>{const done=stageDone(s.id),total=days.filter(x=>x.stage===s.id).length,p=Math.round(done/total*100);return `<button class="stage-link" data-stage="${s.id}"><b>${esc(s.name)}</b><small>${s.days} · ${done}/${total} 已完成</small><div class="stage-progress"><i style="width:${p}%"></i></div></button>`}).join('');
+ document.querySelectorAll('.stage-link').forEach(b=>b.onclick=()=>document.getElementById(`stage-${b.dataset.stage}`).scrollIntoView({behavior:'smooth'}));
+ document.getElementById('dayJump').innerHTML=days.map(x=>`<button class="${completed.has(x.d)?'done':''}" data-day="${x.d}">D${x.d}</button>`).join('');
+ document.querySelectorAll('#dayJump button').forEach(b=>b.onclick=()=>document.getElementById(`day-${b.dataset.day}`).scrollIntoView({behavior:'smooth',block:'center'}));
+}
+function dayCard(x){
+ const done=completed.has(x.d);
+ const files=x.files.length;
+ const hay=[x.t,x.q,x.learn.join(' '),x.outcome,x.practice].join(' ').toLowerCase();
+ const hidden=searchTerm&&!hay.includes(searchTerm.toLowerCase());
+ return `<article class="day-card ${done?'done':''} ${x.d===nextDay().d?'is-next':''} ${hidden?'hidden':''}" id="day-${x.d}">
+   <div class="day-top"><div><div class="day-label"><i>${x.d}</i> DAY ${x.d} · ${esc(x.time)}</div><h3>${esc(x.t)}</h3></div><button class="check-btn" data-check="${x.d}">${done?'✓ 已完成':'标记完成'}</button></div>
+   <div class="question"><b>核心问题：</b>${esc(x.q)}</div>
+   <div class="day-row"><div class="row-title">你会学到</div><div class="chips">${x.learn.map(k=>`<span class="chip">${esc(k)}</span>`).join('')}</div></div>
+   <div class="outcome"><b>学完能做到：</b>${esc(x.outcome)}</div>
+   <div class="output-line"><b>实践产物：</b>${esc(x.practice)}</div>
+   <div class="day-actions"><button class="btn small" data-read="${x.d}">在首页阅读</button><a class="btn dark small" href="${x.chapter}">独立打开</a><div class="materials"><button class="btn secondary small" data-material="${x.d}" aria-expanded="false">配套资料 ${files} ▾</button></div></div>
+ </article>`;
+}
+function renderStages(){
+ document.getElementById('stages').innerHTML=stages.map(s=>`<section class="stage-section" id="stage-${s.id}">
+  <div class="stage-header"><div><div class="stage-kicker">${s.days}</div><h2>${esc(s.name)}</h2><p>${esc(s.goal)}</p></div><div class="milestone"><small>阶段里程碑</small><b>${esc(s.milestone)}</b></div></div>
+  <div class="stage-body"><div class="day-grid">${days.filter(x=>x.stage===s.id).map(dayCard).join('')}</div></div>
+ </section>`).join('');
+ bindCards();
+}
+function bindCards(){
+ document.querySelectorAll('[data-check]').forEach(b=>b.onclick=()=>{const d=Number(b.dataset.check);completed.has(d)?completed.delete(d):completed.add(d);save();renderAll();document.getElementById(`day-${d}`).scrollIntoView({block:'center'});});
+ document.querySelectorAll('[data-read]').forEach(b=>b.onclick=()=>openChapter(days.find(x=>x.d===Number(b.dataset.read))));
+ document.querySelectorAll('[data-material]').forEach(b=>b.onclick=e=>{e.stopPropagation();openMaterials(b,Number(b.dataset.material));});
+}
+const materialsPopup=document.getElementById('materialsPopup');
+function fileKind(path){const ext=path.split('.').pop().toLowerCase();return ext==='md'?'项目文档':ext==='xlsx'?'工作表':ext.toUpperCase();}
+function fileClass(path){const ext=path.split('.').pop().toLowerCase();return ext==='md'?'md':ext==='xlsx'?'xlsx':'';}
+function closeMaterials(){
+ materialsPopup.classList.remove('show','open-up');
+ materialsPopup.innerHTML='';
+ materialsPopup.style.left='';materialsPopup.style.top='';
+ document.querySelectorAll('[data-material][aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+}
+function openMaterials(btn,day){
+ const x=days.find(v=>v.d===day);
+ if(!x||!x.files.length)return;
+ const same=materialsPopup.classList.contains('show')&&materialsPopup.dataset.day===String(day);
+ if(same){closeMaterials();return;}
+ document.querySelectorAll('[data-material][aria-expanded="true"]').forEach(b=>b.setAttribute('aria-expanded','false'));
+ btn.setAttribute('aria-expanded','true');
+ materialsPopup.dataset.day=String(day);
+ materialsPopup.innerHTML=`<div class="materials-tip"><b>资料用途：</b>MD 是可独立复用的正式项目方案；Excel 是全量明细、矩阵与测试用例。HTML 负责学习讲解，三者不是完全重复。</div>${x.files.map(f=>`<a href="${f[1]}"><span>${esc(f[0])}</span><span class="file-kind ${fileClass(f[1])}">${fileKind(f[1])}</span></a>`).join('')}`;
+ materialsPopup.classList.add('show');
+ materialsPopup.classList.remove('open-up');
+ const r=btn.getBoundingClientRect();
+ const margin=12;
+ const w=materialsPopup.offsetWidth;
+ let left=Math.min(window.innerWidth-w-margin,Math.max(margin,r.right-w));
+ let top=r.bottom+8;
+ materialsPopup.style.left=`${left}px`;
+ materialsPopup.style.top=`${top}px`;
+ const h=materialsPopup.offsetHeight;
+ if(top+h>window.innerHeight-margin){
+   top=Math.max(margin,r.top-h-8);
+   materialsPopup.style.top=`${top}px`;
+   materialsPopup.classList.add('open-up');
+ }
+}
+function openChapter(x){document.getElementById('reader').src=x.chapter;document.getElementById('readerLabel').textContent=`Day ${x.d}｜${x.t}`;document.getElementById('readerWrap').classList.add('show');document.body.style.overflow='hidden';}
+function renderAll(){updateProgress();renderSidebar();renderStages();}
+document.getElementById('searchInput').addEventListener('input',e=>{searchTerm=e.target.value.trim();renderStages();});
+document.getElementById('closeReader').onclick=()=>{document.getElementById('readerWrap').classList.remove('show');document.getElementById('reader').src='about:blank';document.body.style.overflow='';};
+document.getElementById('readerWrap').onclick=e=>{if(e.target.id==='readerWrap')document.getElementById('closeReader').click();};
+document.getElementById('resetProgress').onclick=()=>{if(confirm('确认清空当前浏览器中的学习进度？')){completed.clear();save();renderAll();}};
+document.addEventListener('click',e=>{if(!e.target.closest('[data-material]')&&!e.target.closest('#materialsPopup'))closeMaterials();});
+window.addEventListener('resize',closeMaterials);
+window.addEventListener('scroll',closeMaterials,true);
+renderAll();
+</script>
+</body>
+</html>

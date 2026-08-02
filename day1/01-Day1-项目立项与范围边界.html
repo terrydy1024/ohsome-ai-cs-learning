@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Day 1｜OH!SOME 会员 AI 客服：项目立项与范围边界</title>
+<style>
+:root{--bg:#f7f8fb;--card:#fff;--text:#182033;--muted:#64748b;--line:#e5e7eb;--accent:#ff7a00;--accent-soft:#fff4e8;--blue:#2563eb;--green:#15803d;--red:#b42318;--shadow:0 8px 30px rgba(15,23,42,.08)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.75}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);max-width:1320px;margin:0 auto}.side{position:sticky;top:0;height:100vh;padding:24px 18px;border-right:1px solid var(--line);background:rgba(255,255,255,.88);backdrop-filter:blur(10px)}.brand{font-weight:800;font-size:17px;margin-bottom:6px}.side small{color:var(--muted)}.side nav{margin-top:22px}.side a{display:block;text-decoration:none;color:#475569;padding:8px 10px;border-radius:10px;font-size:14px}.side a:hover{background:var(--accent-soft);color:#9a4100}.back{display:inline-flex;margin-top:16px;text-decoration:none;color:var(--accent);font-weight:700}.main{padding:28px 28px 80px;max-width:980px}.hero{background:linear-gradient(135deg,#151d2d,#313d55);color:#fff;border-radius:24px;padding:34px;box-shadow:var(--shadow)}.kicker{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.14);border-radius:999px;padding:5px 11px;font-size:13px}.hero h1{font-size:33px;line-height:1.25;margin:14px 0 10px}.hero p{color:#dbe4f1;margin:0}.meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:20px;font-size:13px;color:#e2e8f0}.section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-top:18px;box-shadow:0 4px 16px rgba(15,23,42,.035)}h2{font-size:23px;margin:0 0 12px}h3{font-size:18px;margin:20px 0 8px}.lead{font-size:17px}.note{border-left:4px solid var(--accent);background:var(--accent-soft);padding:14px 16px;border-radius:0 12px 12px 0}.danger{border-left-color:var(--red);background:#fff1f0}.ok{border-left-color:var(--green);background:#ecfdf3}.blue{border-left-color:var(--blue);background:#eff6ff}.case{border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0;background:#fcfcfd}.label{font-size:12px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}.quote{font-size:18px;font-weight:700;margin:7px 0}.pill{display:inline-flex;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:700;margin-right:6px}.p1{background:#fee2e2;color:#991b1b}.p2{background:#dbeafe;color:#1d4ed8}.p3{background:#dcfce7;color:#166534}.flow{display:flex;align-items:stretch;gap:8px;overflow-x:auto;padding:8px 0}.step{min-width:135px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px;text-align:center}.arrow{align-self:center;color:#94a3b8;font-weight:800}.matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.box{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}.box b{display:block;margin-bottom:4px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0}th,td{border:1px solid var(--line);padding:10px;vertical-align:top;text-align:left}th{background:#f8fafc}.in{color:#166534;font-weight:800}.out{color:#991b1b;font-weight:800}details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0;background:#fff}summary{font-weight:800;cursor:pointer}.check{display:flex;gap:10px;align-items:flex-start;margin:10px 0}.check input{margin-top:6px;transform:scale(1.15)}textarea{width:100%;min-height:130px;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;resize:vertical}.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{border:0;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer;background:var(--accent);color:white;text-decoration:none}.btn.alt{background:#fff;color:var(--text);border:1px solid var(--line)}.small{font-size:13px;color:var(--muted)}.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#0f172a;color:#e2e8f0;border-radius:14px;padding:16px;overflow:auto}.footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}@media(max-width:900px){.layout{display:block}.side{position:relative;height:auto;border-right:0;border-bottom:1px solid var(--line)}.side nav{display:none}.main{padding:16px 12px 56px}.hero{padding:26px}.hero h1{font-size:27px}.two,.three,.matrix{grid-template-columns:1fr}.flow{display:block}.step{margin:8px 0}.arrow{text-align:center;transform:rotate(90deg)}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="side">
+    <div class="brand">OH!SOME 会员 AI 客服</div>
+    <small>Day 1 · 项目立项与范围边界</small>
+    <a class="back" href="../00-学习首页.html">← 返回学习首页</a>
+    <nav>
+      <a href="#goal">1. 本章目标</a>
+      <a href="#incident">2. 从一个事故开始</a>
+      <a href="#types">3. 四类会员问题</a>
+      <a href="#system">4. 为什么不是聊天机器人</a>
+      <a href="#facts">5. 项目事实边界</a>
+      <a href="#scope">6. 一期范围</a>
+      <a href="#priority">7. 场景优先级</a>
+      <a href="#brief">8. 立项任务书</a>
+      <a href="#exercise">9. 练习与验收</a>
+      <a href="#interview">10. 面试追问</a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="hero">
+      <span class="kicker">Day 1 · 60 分钟</span>
+      <h1>AI 会员客服不是“接一个大模型”</h1>
+      <p>从业务问题、会员数据、规则知识和风险边界出发，完成 OH!SOME 多国家会员 AI 客服的第一版立项说明。</p>
+      <div class="meta"><span>输出：项目范围 V1</span><span>案例：积分、优惠券、生日礼</span><span>验收：5 分钟立项讲述</span></div>
+    </header>
+
+    <section class="section" id="goal">
+      <h2>一、本章目标</h2>
+      <p class="lead">学完后，你需要能回答四个问题：</p>
+      <div class="matrix">
+        <div class="box"><b>为什么做</b><span class="small">会员服务现在有什么真实问题？</span></div>
+        <div class="box"><b>AI 做什么</b><span class="small">哪些场景适合自助解决？</span></div>
+        <div class="box"><b>系统怎么组成</b><span class="small">为什么需要 API、RAG、流程和人工？</span></div>
+        <div class="box"><b>一期不做什么</b><span class="small">如何控制风险和项目范围？</span></div>
+      </div>
+      <div class="note" style="margin-top:14px"><b>今日核心判断：</b>会员客服 AI 的产品对象不是“聊天”，而是“会员服务任务”。聊天只是入口，真正的价值来自正确识别任务、读取真实会员资产、检索有效规则，并完成回答、引导或转人工。</div>
+    </section>
+
+    <section class="section" id="incident">
+      <h2>二、从一个会员服务事故开始</h2>
+      <div class="case">
+        <div class="label">用户问题</div>
+        <div class="quote">“我现在有多少积分？”</div>
+        <div class="label">系统实际情况</div>
+        <p>会员接口调用超时，没有返回积分余额。知识库只检索到“消费后可获得积分、积分存在有效期”的通用规则。</p>
+        <div class="label">AI 回答</div>
+        <div class="quote">“您当前有 1,280 积分，其中 200 积分将在本月底过期。”</div>
+      </div>
+      <div class="note danger"><b>这是 P0 级错误。</b>系统没有真实会员资产，却生成了具体余额和过期数量。它不仅“回答不准确”，还可能引发会员投诉、错误消费决策和数据可信度问题。</div>
+      <h3>这次错误不是一句“模型幻觉”就解释完</h3>
+      <table>
+        <tr><th>检查层</th><th>需要判断</th></tr>
+        <tr><td>身份层</td><td>是否确认了当前登录会员？是否允许查询该账户？</td></tr>
+        <tr><td>工具层</td><td>积分接口是否成功？参数是否正确？超时后是否重试？</td></tr>
+        <tr><td>知识层</td><td>检索到的是通用规则，还是具体资产数据？</td></tr>
+        <tr><td>生成层</td><td>Prompt 是否明确禁止模型生成接口未返回的数据？</td></tr>
+        <tr><td>兜底层</td><td>接口失败后是否应提示稍后重试或转人工？</td></tr>
+      </table>
+      <p>产品经理真正要做的是定位哪一层失效，并定义系统在失败时应采取的行为。</p>
+    </section>
+
+    <section class="section" id="types">
+      <h2>三、先分清四类会员问题</h2>
+      <p>会员客服问题不是一种问题。不同类型使用的数据、处理流程和风险完全不同。</p>
+      <div class="two">
+        <div class="box"><span class="pill p2">类型 1</span><b>会员资产查询</b><p>例：我有多少积分？有哪些可用券？当前是什么等级？</p><p class="small">依赖登录态和会员 API。答案只能来自实时或准实时业务数据。</p></div>
+        <div class="box"><span class="pill p3">类型 2</span><b>会员规则解释</b><p>例：积分有效期多久？生日礼怎么领取？这张券能在哪些门店用？</p><p class="small">依赖有效规则知识库和 RAG，需要国家、业务线、语言和时间版本过滤。</p></div>
+        <div class="box"><span class="pill p1">类型 3</span><b>异常诊断与引导</b><p>例：积分三天没到账；券明明没过期却不能用；生日礼没有发。</p><p class="small">通常需要多步工具调用、规则判断、追问和异常工作流。</p></div>
+        <div class="box"><span class="pill p1">类型 4</span><b>投诉与人工处理</b><p>例：要求赔偿、账户被盗、重复扣款、质疑隐私泄露。</p><p class="small">AI 可收集信息和总结上下文，但不能擅自赔偿、改资产或做高风险结论。</p></div>
+      </div>
+      <div class="note blue"><b>关键区别：</b>“查询积分余额”回答的是这个会员此刻的真实状态；“解释积分有效期”回答的是一条业务规则。前者靠 API，后者靠知识库。异常问题往往两者都需要。</div>
+    </section>
+
+    <section class="section" id="system">
+      <h2>四、为什么不能只做一个会员知识库聊天机器人</h2>
+      <div class="flow">
+        <div class="step"><b>用户与上下文</b><br><span class="small">登录会员、国家、语言、入口</span></div><div class="arrow">→</div>
+        <div class="step"><b>意图判断</b><br><span class="small">资产、规则、异常、投诉</span></div><div class="arrow">→</div>
+        <div class="step"><b>流程编排</b><br><span class="small">追问、查数据、检索规则</span></div><div class="arrow">→</div>
+        <div class="step"><b>API / RAG</b><br><span class="small">真实资产 + 有效规则</span></div><div class="arrow">→</div>
+        <div class="step"><b>生成与护栏</b><br><span class="small">回答、拒答、转人工</span></div>
+      </div>
+      <h3>五个模块分别解决什么问题</h3>
+      <table>
+        <tr><th>模块</th><th>作用</th><th>没有它会怎样</th></tr>
+        <tr><td>意图识别</td><td>判断用户是在查资产、问规则、报异常还是投诉</td><td>所有问题都走同一条流程，无法正确处理复杂任务</td></tr>
+        <tr><td>会员 API</td><td>查询积分、券、等级、成长值、订单和权益记录</td><td>AI 只能讲通用规则，不能回答“我的”问题</td></tr>
+        <tr><td>RAG</td><td>检索当前国家、当前版本的会员规则和 SOP</td><td>模型依靠记忆自由生成，容易串国家、串版本或编造规则</td></tr>
+        <tr><td>工作流</td><td>定义先查什么、后查什么、失败怎么处理</td><td>复杂异常只能给泛泛答案，不能定位原因</td></tr>
+        <tr><td>人工客服</td><td>接管高风险、低置信度和需要人工权限的任务</td><td>AI 要么过度回答，要么遇到问题只能结束会话</td></tr>
+      </table>
+      <div class="note"><b>产品取舍：</b>一期更适合采用“确定性工作流 + 有限工具调用”，而不是让模型完全自主规划。会员资产和补偿相关操作风险高，关键步骤必须可控、可审计。</div>
+    </section>
+
+    <section class="section" id="facts">
+      <h2>五、项目事实边界</h2>
+      <div class="three">
+        <div class="box"><b>真实做过</b><p class="small">会员中台、CRM、会员账户、积分、成长值、等级、优惠券、权益、App/H5、POS 核销、多国家会员规则。</p></div>
+        <div class="box"><b>本次模拟补齐</b><p class="small">AI Agent、Tool Calling、RAG、多语言知识治理、防幻觉、评测、灰度上线与线上排障。</p></div>
+        <div class="box"><b>不能直接假定</b><p class="small">真实咨询量、客服成本、线上准确率、实际模型、真实接口性能、真实投诉变化。</p></div>
+      </div>
+      <p>后续为了完成方案，会使用一组“模拟基线数据”。所有模拟数据只用于设计和练习，不能在面试中说成真实经营结果。</p>
+    </section>
+
+    <section class="section" id="scope">
+      <h2>六、第一期范围怎么定</h2>
+      <p>一期目标不是覆盖所有会员问题，而是优先处理高频、规则相对明确、风险可控、能够通过现有会员能力解决的场景。</p>
+      <table>
+        <tr><th>范围</th><th>场景</th><th>判断</th></tr>
+        <tr><td class="in">纳入一期</td><td>积分余额/流水、等级/成长值、优惠券查询、生日礼/折扣权益规则</td><td>高频，已有数据和规则基础</td></tr>
+        <tr><td class="in">纳入一期</td><td>积分未到账、券不可用、生日礼未发</td><td>用户痛点明显，可通过工具和规则诊断</td></tr>
+        <tr><td class="in">纳入一期</td><td>低置信度、规则冲突、用户主动要求时转人工</td><td>必须具备的安全兜底</td></tr>
+        <tr><td class="out">一期不做</td><td>AI 自动改积分、自动发券、自动赔偿</td><td>涉及资产变更和不可逆操作</td></tr>
+        <tr><td class="out">一期不做</td><td>复杂退款、支付争议、账户盗用结论</td><td>需要人工权限、调查或财务系统</td></tr>
+        <tr><td class="out">一期不做</td><td>商品推荐、营销推荐、主动外呼、语音客服</td><td>不是当前会员服务主目标，避免范围膨胀</td></tr>
+      </table>
+      <div class="note ok"><b>正确的 MVP：</b>先把“查得到、讲得对、异常能引导、风险会转人工”做好，再考虑自动操作和营销场景。</div>
+    </section>
+
+    <section class="section" id="priority">
+      <h2>七、用四个维度确定场景优先级</h2>
+      <p>不要只看咨询量。推荐使用以下四维判断：</p>
+      <table>
+        <tr><th>维度</th><th>问题</th><th>示例</th></tr>
+        <tr><td>频次</td><td>咨询是否高频、是否重复占用人工？</td><td>积分余额、券使用规则通常高频</td></tr>
+        <tr><td>可标准化</td><td>规则和处理步骤是否稳定？</td><td>积分有效期比复杂投诉更标准</td></tr>
+        <tr><td>数据可得</td><td>是否已有 API、流水和规则数据？</td><td>有积分流水接口才适合自动诊断</td></tr>
+        <tr><td>风险</td><td>回答错误或执行错误的后果多大？</td><td>查余额风险低于自动补发权益</td></tr>
+      </table>
+      <h3>第一版优先级示例</h3>
+      <table>
+        <tr><th>场景</th><th>频次</th><th>标准化</th><th>数据基础</th><th>风险</th><th>优先级</th></tr>
+        <tr><td>积分余额查询</td><td>高</td><td>高</td><td>高</td><td>中</td><td>P0</td></tr>
+        <tr><td>优惠券使用规则</td><td>高</td><td>高</td><td>高</td><td>低</td><td>P0</td></tr>
+        <tr><td>积分未到账</td><td>高</td><td>中</td><td>中</td><td>中</td><td>P0</td></tr>
+        <tr><td>自动补发优惠券</td><td>中</td><td>中</td><td>低</td><td>高</td><td>暂不做</td></tr>
+        <tr><td>复杂投诉赔偿</td><td>低</td><td>低</td><td>低</td><td>高</td><td>转人工</td></tr>
+      </table>
+      <p class="small">表中的优先级属于学习用的初始判断，Day 2 会通过完整场景库进一步校准。</p>
+    </section>
+
+    <section class="section" id="brief">
+      <h2>八、Day 1 工作产物：项目立项任务书 V1</h2>
+      <div class="code">项目名称：OH!SOME 多国家会员 AI 客服
+目标用户：已注册会员、付费会员，以及需要查询会员资产和规则的用户
+核心问题：规则分散、重复咨询多、非工作时间响应不足、跨国家口径不一致、异常问题需跨系统查询
+一期目标：覆盖高频会员资产查询、规则解释和三类典型异常问题，提供 7×24 小时自助服务与人工兜底
+核心能力：意图识别、会员 API、RAG、异常工作流、答案护栏、转人工
+一期范围：积分、等级、成长值、优惠券、生日礼、折扣权益、积分未到账、券不可用、生日礼未发
+一期不做：AI 改资产、自动赔偿、复杂退款争议、营销推荐、语音和主动外呼
+成功指标：场景覆盖率、自助解决率、资产查询准确率、规则命中率、正确转人工率、P0 风险错误、响应时长
+风险原则：真实资产只来自 API；有效规则只来自通过版本过滤的知识库；无法确认时不猜测
+</div>
+      <div class="btns">
+        <a class="btn" href="01-项目立项与范围说明.md">下载 Markdown 产物</a>
+      </div>
+    </section>
+
+    <section class="section" id="exercise">
+      <h2>九、练习与自我验收</h2>
+      <p>先独立作答，再展开参考答案。答案不用追求术语，重点是逻辑完整。</p>
+      <h3>练习 1</h3>
+      <p><b>为什么 OH!SOME 不能只做一个“接入会员知识库的聊天机器人”？</b></p>
+      <textarea id="a1" placeholder="写下你的答案……"></textarea>
+      <details><summary>查看参考答案</summary><p>因为知识库只能解释通用规则，不能安全地回答“我有多少积分、我的券为什么不能用”等个性化问题。会员资产必须通过登录态和会员 API 查询；异常问题需要结合订单、积分流水、券状态和规则完成多步判断；低置信度、高风险或需要人工权限的任务必须转人工。因此系统需要意图识别、工具调用、RAG、工作流和人工客服共同组成。</p></details>
+      <h3>练习 2</h3>
+      <p><b>“查询积分余额”和“解释积分有效期”有什么本质区别？</b></p>
+      <textarea id="a2" placeholder="写下你的答案……"></textarea>
+      <details><summary>查看参考答案</summary><p>积分余额属于用户专属的动态会员资产，需要先验证会员身份，再调用积分余额或积分流水接口，答案只能使用接口返回值。积分有效期属于业务规则，需要根据会员所在国家、业务线和规则生效时间检索知识库后回答。前者重点是身份、权限和数据真实性；后者重点是知识版本、检索范围和规则准确性。</p></details>
+      <h3>练习 3</h3>
+      <p><b>接口失败后，AI 能否继续回答具体积分余额？应该怎样处理？</b></p>
+      <textarea id="a3" placeholder="写下你的答案……"></textarea>
+      <details><summary>查看参考答案</summary><p>不能。知识库中的通用积分规则不能替代会员实时资产。系统可短暂重试接口；仍失败时应明确说明暂时无法获取账户数据，建议稍后重试，或根据用户意愿转人工。可以补充通用规则，但必须明确它不是该会员当前余额，不能生成任何具体资产数字。</p></details>
+
+      <h3>完成检查</h3>
+      <label class="check"><input type="checkbox" class="task" data-id="t1">我能区分资产查询、规则解释、异常诊断和投诉转人工。</label>
+      <label class="check"><input type="checkbox" class="task" data-id="t2">我能说清 API、RAG、工作流和人工客服各自解决什么问题。</label>
+      <label class="check"><input type="checkbox" class="task" data-id="t3">我能解释为什么真实会员资产不能由模型生成。</label>
+      <label class="check"><input type="checkbox" class="task" data-id="t4">我能说清第一期纳入和不纳入的范围及原因。</label>
+      <div class="btns"><button class="btn" onclick="saveAll()">保存学习进度</button><button class="btn alt" onclick="clearAll()">清空本页记录</button></div>
+      <p class="small" id="saveMsg"></p>
+    </section>
+
+    <section class="section" id="interview">
+      <h2>十、面试追问与示范回答</h2>
+      <details open><summary>追问 1：为什么不用纯 RAG，非要做 Agent 或工作流？</summary><p><b>回答重点：</b>纯 RAG 更适合规则解释，但会员客服大量问题涉及个人资产和异常诊断。比如积分未到账需要先确认订单，再查积分流水，结合当前国家积分规则判断是否仍在正常发放时限内。这里需要按照确定步骤调用多个工具并处理失败分支，因此需要工作流编排。我们一期不会让模型完全自主规划，而是用确定性流程约束关键步骤。</p></details>
+      <details><summary>追问 2：一期为什么不让 AI 自动补积分或发券？</summary><p><b>回答重点：</b>补积分和发券会改变会员资产，涉及成本、权限、审计和作弊风险。一期先让 AI 完成识别、查询、解释和问题归因，确认需要补偿时生成处理摘要并转人工审批。等规则稳定、误判率足够低、权限和审计机制成熟后，再评估有限自动化。</p></details>
+      <details><summary>追问 3：你怎么证明这个项目值得做？</summary><p><b>回答重点：</b>先分析真实咨询数据，确认高频重复问题占比、非工作时间咨询、人工平均处理时长、重复转接和跨国家误答。再选择规则稳定、数据可得、风险可控的场景做 MVP，通过自助解决率、人工处理量下降、首次解决率、错误率和用户满意度验证价值。没有基线数据时，不应该直接承诺节省多少成本。</p></details>
+      <details><summary>追问 4：项目最核心的风险是什么？</summary><p><b>回答重点：</b>第一是会员资产查询越权或泄露；第二是接口失败后模型编造资产；第三是检索到错误国家或失效规则；第四是未经授权承诺补偿；第五是复杂投诉没有及时转人工。因此身份校验、数据隔离、版本过滤、生成约束、风险分流和审计日志都是上线前的必要能力。</p></details>
+    </section>
+
+    <section class="section">
+      <h2>Day 1 验收方式</h2>
+      <p>你需要不看稿，用 5 分钟讲清：</p>
+      <ol>
+        <li>OH!SOME 当前会员服务为什么需要 AI；</li>
+        <li>第一期解决哪些问题、不解决哪些问题；</li>
+        <li>为什么需要 API、RAG、工作流和人工客服；</li>
+        <li>最关键的三个风险和对应控制方式。</li>
+      </ol>
+      <div class="note">完成后可回复：<b>Day 1 打卡 + 三道练习答案</b>。下一章会基于你的答案继续构建《会员咨询场景库》。</div>
+    </section>
+
+    <div class="footer">Day 1 · 项目立项与范围边界｜OH!SOME 多国家会员 AI 客服</div>
+  </main>
+</div>
+<script>
+const key='ohsome-day1';
+function load(){const d=JSON.parse(localStorage.getItem(key)||'{}');['a1','a2','a3'].forEach(id=>{if(d[id])document.getElementById(id).value=d[id]});document.querySelectorAll('.task').forEach(x=>x.checked=!!d[x.dataset.id]);}
+function saveAll(){const d={};['a1','a2','a3'].forEach(id=>d[id]=document.getElementById(id).value);document.querySelectorAll('.task').forEach(x=>d[x.dataset.id]=x.checked);localStorage.setItem(key,JSON.stringify(d));document.getElementById('saveMsg').textContent='已保存到当前浏览器。';}
+function clearAll(){localStorage.removeItem(key);['a1','a2','a3'].forEach(id=>document.getElementById(id).value='');document.querySelectorAll('.task').forEach(x=>x.checked=false);document.getElementById('saveMsg').textContent='已清空本页记录。';}
+load();
+</script>
+</body>
+</html>
