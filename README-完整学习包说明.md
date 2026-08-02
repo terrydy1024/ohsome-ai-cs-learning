@@ -33,14 +33,26 @@
 
 会员中台、CRM、App/会员H5和积分权益能力是用户的真实业务经历。本学习包中的AI客服系统、模拟上线结果和指标是学习案例，不能作为真实生产业绩。建议先阅读Day 21的“真实性边界”。
 
-## 在线浏览（GitHub Pages）
+## 在线浏览（Gitee Pages）
 
-本目录已配置为可直接托管到 GitHub Pages 的静态站点：
+本目录是可直接托管的纯静态站点：
 
 - `index.html` 会重定向到 `00-学习首页.html`（学习首页），因此仓库根路径即可进入；
-- 根目录的 `.nojekyll` 用于禁止 GitHub 自带的 Jekyll 处理，保证 `.md` / `.xlsx` 等配套资料按原文件提供（直接打开或下载，不会被编译成网页）。
+- 根目录的 `.nojekyll` 是为 GitHub Pages 预留的（禁止 Jekyll 编译 `.md`/`.xlsx`），Gitee Pages 本身不跑 Jekyll，留着无害、也方便以后换 GitHub。
 
-发布步骤：把本目录推送到 GitHub 仓库后，在仓库 **Settings → Pages** 中选择分支 `main`、目录 `/root` 启用即可。手机浏览器访问 `https://<用户名>.github.io/<仓库名>/` 就能学习。
+发布步骤（Gitee）：
+
+1. 在 gitee.com 新建**公开**仓库（不要勾初始化 README）；
+2. 在本地目录执行（替换成你的用户名和仓库名）：
+   ```bash
+   git remote add origin https://gitee.com/imdouya/仓库名.git
+   git push -u origin main
+   ```
+   > 推送账号 `imdouya`；密码填 Gitee **私人令牌**（设置 → 私人令牌，勾 `projects` 权限）或账号密码均可。
+3. 仓库 → **服务 → Gitee Pages** → 部署分支选 `main`、部署目录 `/` → 点击「启动」。
+   - 若按钮灰色，按提示先完成**实名认证**（绑定手机号 + 实名）。
+   - 免费版每次 push 后需回到此面板点「更新」才会重新部署。
+4. 手机浏览器访问 `https://imdouya.gitee.io/仓库名/` 即可学习。
 
 > 注意：`.md` 会在浏览器中直接显示文本，`.xlsx` 会被下载（手机需安装表格 App 才能打开）。
 
